@@ -1,19 +1,23 @@
 services:
-  ros:
+  ros2:
     build: .
     command: tail -f /dev/null
+    platform: linux/arm64   # or linux/amd64
     volumes: 
       - ./workspace:/root/ros2_ws/
+      - /Users/balling/projects/coordinated-robot-search/:/root/coordinated-robot-search/
     environment:
       - DISPLAY=novnc:0.0
-    env_file:
-      - ros.env
+    depends_on:
+      - novnc
     networks:
       - x11
   novnc:  
     image: theasp/novnc:latest
-    env_file:
-      - novnc.env
+    environment:
+      - DISPLAY_WIDTH=1920
+      - DISPLAY_HEIGHT=1080
+      - RUN_XTERM=no
     ports:
       - "8080:8080"
     networks:
