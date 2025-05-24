@@ -6,8 +6,14 @@ services:
     volumes: 
       - ./workspace:/root/ros2_ws/
       - /Users/balling/projects/coordinated-robot-search/:/root/coordinated-robot-search/
+      - /Users/balling/dotfiles/nvim:/root/.config/nvim
+      - /Users/balling/dotfiles/yazi:/root/.config/yazi
+      - /Users/balling/dotfiles/small/tmux.conf:/root/.config/tmux/tmux.conf
     environment:
       - DISPLAY=novnc:0.0
+      - TERM=xterm-256color
+    ports:
+      - "8888:8888"
     depends_on:
       - novnc
     networks:
