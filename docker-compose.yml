@@ -9,6 +9,7 @@ services:
       - /Users/balling/dotfiles/nvim:/root/.config/nvim
       - /Users/balling/dotfiles/yazi:/root/.config/yazi
       - /Users/balling/dotfiles/small/tmux.conf:/root/.config/tmux/tmux.conf
+      - ./.state/.bash_history:/root/.bash_history
     environment:
       - DISPLAY=novnc:0.0
       - TERM=xterm-256color
